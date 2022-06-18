@@ -25,6 +25,11 @@ class Post {
     let sql = "SELECT * FROM blog_posts;";
     return db.execute(sql);
   }
+
+  static findById(id) {
+    let sql = `SELECT * FROM blog_posts WHERE post_id=${id};`;
+    return db.execute(sql);
+  }
 }
 
 module.exports = Post;

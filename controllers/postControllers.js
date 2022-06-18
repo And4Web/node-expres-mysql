@@ -12,12 +12,33 @@ async function getAllPosts(req, res, next) {
   }
 }
 
-async function createNewPost(req, res) {
-  await res.send("create new post here.");
+async function createNewPost(req, res, next) {
+  try {
+    let { post_title, post_body } = req.body;
+    let post = new Post(post_title, post_body);
+    blog_post = post.save();
+
+    res.status(201).json({ success: true });
+  } catch (error) {
+    next(error);
+  }
 }
 
-async function getPostById(req, res) {
-  await res.send("get all posts using id here.");
+async function getPostById(req, res, next) {
+  try {
+    let post_id = req.params.id;
+    let [post] = await Post.findById(post_id);
+    res.status(200).json({ post });
+  } catch (error) {
+    next(error);
+  }
+
+  async function deletePostById(req, res, next) {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = {
