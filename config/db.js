@@ -13,12 +13,6 @@ const pool = mysql.createPool({
 
 let sql = "SELECT * FROM blog_posts;";
 
-pool.query(sql, function (err, rows, fields) {
-  if (err) {
-    throw err;
-  } else {
-    console.log(rows, fields);
-  }
-});
+pool.query(sql, function (err, rows) {});
 
 module.exports = pool.promise();
