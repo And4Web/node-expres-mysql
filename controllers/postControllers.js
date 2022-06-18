@@ -1,7 +1,15 @@
 const Post = require("../models/Post");
 
 async function getAllPosts(req, res, next) {
-  await res.send("get all posts here.");
+  try {
+    const [blog_posts] = await Post.findAll();
+    res.status(200).json({
+      count: blog_posts.length,
+      blog_posts,
+    });
+  } catch (error) {
+    next(error);
+  }
 }
 
 async function createNewPost(req, res) {

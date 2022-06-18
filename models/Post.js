@@ -21,5 +21,10 @@ class Post {
     return db.execute(sql);
   }
 
-  async findAll() {}
+  static findAll() {
+    let sql = "SELECT * FROM blog_posts;";
+    return db.execute(sql);
+  }
 }
+
+module.exports = Post;
