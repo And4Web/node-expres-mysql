@@ -30,6 +30,8 @@ class Post {
     let sql = `SELECT * FROM blog_posts WHERE post_id=${id};`;
     return db.execute(sql);
   }
+
+  async deletePost() {}
 }
 
 module.exports = Post;
